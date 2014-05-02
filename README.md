@@ -18,4 +18,7 @@ Chip8-emu
 
 > > chip8.c => loadProgram()
 
+Space Invaders
+![ScreenShot](http://i.imgur.com/oAAj0cY.png)
+Sierpinski's Triangle Demo
 ![ScreenShot](http://i.imgur.com/oAAj0cY.png)
