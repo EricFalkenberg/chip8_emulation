@@ -37,18 +37,22 @@ void init_chip() {
     }
 }
 
-void loadProgram(char* fname) {
+int loadProgram(char* fname) {
     //
     // Load program from file
     //
     FILE* file = fopen(fname,"r");
-    unsigned short* read = malloc(sizeof(char));
-    int count = 512;
-    while (fread(read, sizeof(char), 1, file)) {
-        memory[count] = *read;
-        count++;
+    if (file != NULL) {
+        unsigned short* read = malloc(sizeof(char));
+        int count = 512;
+        while (fread(read, sizeof(char), 1, file)) {
+            memory[count] = *read;
+            count++;
+        }
+        free(read);
+        return 1;
     }
-    free(read);
+    return 0;
 }
 
 void executeCycle() {
@@ -448,16 +452,21 @@ void drawScreen(void) {
 
 int main(int argc, char **argv) {
     if (argc == 2) {
-        init_chip();
-        loadProgram(argv[1]);
-        drawFlag = FALSE;
-        glutInit(&argc, argv);
-        glutInitDisplayMode(GLUT_RGB);
-        glutInitWindowSize(640,320);
-        glutCreateWindow("Emulator");
-        glutDisplayFunc(drawScreen);
-        glutIdleFunc(drawScreen);
-        glutMainLoop();
+        int fileExists = loadProgram(argv[1]);
+        if (fileExists) {
+            init_chip();
+            drawFlag = FALSE;
+            glutInit(&argc, argv);
+            glutInitDisplayMode(GLUT_RGB);
+            glutInitWindowSize(640,320);
+            glutCreateWindow("Emulator");
+            glutDisplayFunc(drawScreen);
+            glutIdleFunc(drawScreen);
+            glutMainLoop();
+        }
+        else {
+            printf("File does not exist.\n");
+        }
     }
     else {
         printf("usage: emu8 <filename>\n");
