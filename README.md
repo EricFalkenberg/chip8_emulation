@@ -18,4 +18,4 @@ Chip8-emu
 
 > > chip8.c => loadProgram()
 
-![ScreenShot](http://i.imgur.com/CGRhRf9.png)
+![ScreenShot](http://i.imgur.com/oAAj0cY.png)
