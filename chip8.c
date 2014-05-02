@@ -460,7 +460,7 @@ int main(int argc, char **argv) {
         glutMainLoop();
     }
     else {
-        printf("usage: main <filename>\n");
+        printf("usage: emu8 <filename>\n");
     }
     return EXIT_SUCCESS;
 }

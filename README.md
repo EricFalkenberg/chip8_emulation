@@ -12,7 +12,7 @@ Chip8-emu
 
 > this will create an executable that can be invoked with
 
-> > `./main path/to/filename`
+> > `./emu8 path/to/filename`
 
 > where the specified file is a valid chip8 program.
 
