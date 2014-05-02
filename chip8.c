@@ -430,7 +430,7 @@ void drawScreen(void) {
     if (drawFlag == TRUE) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         for (int i = 0; i < 32; i++) {
-            yline = i*0.0625;
+            yline = i*0.0625f;
             for (int j = 0; j < 64; j++) {
                 if (gfx[index] == 1) {
                     xline = j*0.03125f;
@@ -452,9 +452,9 @@ void drawScreen(void) {
 
 int main(int argc, char **argv) {
     if (argc == 2) {
+        init_chip();
         int fileExists = loadProgram(argv[1]);
         if (fileExists) {
-            init_chip();
             drawFlag = FALSE;
             glutInit(&argc, argv);
             glutInitDisplayMode(GLUT_RGB);
