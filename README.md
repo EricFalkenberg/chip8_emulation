@@ -14,4 +14,7 @@ Chip8-emu
 
 > > `./main`
 
+> which will execute the emulator.
+
+> As of now, the emulator is hard-coded to run whichever file is pointed to by the string in chip8.c =>loadProgram()
 ![ScreenShot](http://i.imgur.com/CGRhRf9.png)
