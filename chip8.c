@@ -444,10 +444,12 @@ void drawScreen(void) {
                 index++;
             }
         }
+        glutSwapBuffers();
     }
-    glutSwapBuffers();
     drawFlag = FALSE;
     executeCycle();
+    usleep(2000);
+    glutPostRedisplay();
 }
 
 int main(int argc, char **argv) {
@@ -461,7 +463,6 @@ int main(int argc, char **argv) {
             glutInitWindowSize(640,320);
             glutCreateWindow("Emulator");
             glutDisplayFunc(drawScreen);
-            glutIdleFunc(drawScreen);
             glutMainLoop();
         }
         else {
