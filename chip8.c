@@ -452,6 +452,32 @@ void drawScreen(void) {
     glutPostRedisplay();
 }
 
+void handleInput(unsigned char keyPressed, int x, int y) {
+    if (keyPressed == 'q') {
+        key[0x4] = 1;
+    }
+    else if (keyPressed == 'w') {
+        key[0x5] = 1;
+    }
+    else if (keyPressed == 'e') { 
+        key[0x6] = 1;
+    }
+    glutPostRedisplay();
+}
+
+void handleInputRel(unsigned char keyPressed, int x, int y) {
+    if (keyPressed == 'q') {
+        key[0x4] = 0;
+    }
+    else if (keyPressed == 'w') {
+        key[0x5] = 0;
+    }
+    else if (keyPressed == 'e') { 
+        key[0x6] = 0;
+    }
+    glutPostRedisplay();
+}
+
 int main(int argc, char **argv) {
     if (argc == 2) {
         init_chip();
@@ -463,6 +489,8 @@ int main(int argc, char **argv) {
             glutInitWindowSize(640,320);
             glutCreateWindow("Emulator");
             glutDisplayFunc(drawScreen);
+            glutKeyboardFunc(handleInput);
+            glutKeyboardUpFunc(handleInputRel);
             glutMainLoop();
         }
         else {
