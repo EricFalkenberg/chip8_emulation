@@ -41,7 +41,7 @@ void loadProgram() {
     //
     // Load program from file
     //
-    FILE* file = fopen("space.ch8","r");
+    FILE* file = fopen("sier.ch8","r");
     unsigned short* read = malloc(sizeof(char));
     int count = 512;
     while (fread(read, sizeof(char), 1, file)) {

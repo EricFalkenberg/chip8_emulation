@@ -20,5 +20,6 @@ Chip8-emu
 
 Space Invaders
 ![ScreenShot](http://i.imgur.com/oAAj0cY.png)
+
 Sierpinski's Triangle Demo
-![ScreenShot](http://i.imgur.com/oAAj0cY.png)
+![ScreenShot](http://i.imgur.com/DkG4eYn.png?1)
