@@ -24,7 +24,7 @@ void init_chip() {
         memory[i] = 0;                  // mem init
     }
     for (int i=0;i<80;i++) {
-        memory[0x050+i] = chip8_fontset[i];   // load fontset into memory
+        memory[i] = chip8_fontset[i];   // load fontset into memory
     }
     for (int i=0;i<16;i++) {
         v[i] = 0;                       // zero out registers
@@ -41,7 +41,7 @@ void loadProgram() {
     //
     // Load program from file
     //
-    FILE* file = fopen("maze.ch8","r");
+    FILE* file = fopen("space.ch8","r");
     unsigned short* read = malloc(sizeof(char));
     int count = 512;
     while (fread(read, sizeof(char), 1, file)) {
@@ -358,10 +358,18 @@ void executeCycle() {
                 //  Sets I to the location of the sprite for the character in VX.
                 //  Characters 0-F (in hexadecimal_ are represented by a 4x5 font.
                 //
-                    I = 0x050 + (5*v[(opcode & 0x0F00) >> 8]);
+                    I = (5*v[(opcode & 0x0F00) >> 8]);
                     pc += 2;
                     break;
                 case 0x0033:
+                //
+                //  Stores the Binary-coded decimal representation of VX, with the most
+                //  significant of three digits at the address in I, the middle digit at I 
+                //  plus 1, and the least significant digit at I plus 2. (In other words,
+                //  take the decimal representation of VX, place the hundreds digit in memory
+                //  at location in I, the tens digit at location I+1, and the ones digit at
+                //  location I+2.)
+                //
                     memory[I]     =  v[(opcode & 0x0F00) >> 8] / 100;
                     memory[I + 1] = (v[(opcode & 0x0F00) >> 8] / 10) % 10;
                     memory[I + 2] = (v[(opcode & 0x0F00) >> 8] % 100) % 10;
@@ -371,13 +379,16 @@ void executeCycle() {
                 //
                 //  Stores V0 to VX in memory starting at address I
                 //
-                    for (int i = 0; i < ((opcode & 0x0F00) >> 8); i++) {
+                    for (int i = 0; i <= ((opcode & 0x0F00) >> 8); i++) {
                         memory[I+i] = v[i];
                     }
                     pc += 2;
                     break;
                 case 0x0065:
-                    for (int i = 0; i < ((opcode & 0x0F00) >> 8); i++) {
+                //
+                //  Fills V0 to VX with values from memory starting at address I
+                //
+                    for (int i = 0; i <= ((opcode & 0x0F00) >> 8); i++) {
                         v[i] = memory[I+i];
                     }
                     pc += 2;
@@ -433,7 +444,6 @@ void drawScreen(void) {
     glutSwapBuffers();
     drawFlag = FALSE;
     executeCycle();
-    usleep(16666);
 }
 
 int main(int argc, char **argv) {
