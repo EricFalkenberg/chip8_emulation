@@ -14,3 +14,4 @@ Chip8-emu
 
 > > `./main`
 
+![ScreenShot](http://i.imgur.com/CGRhRf9.png)
