@@ -12,11 +12,9 @@ Chip8-emu
 
 > this will create an executable that can be invoked with
 
-> > `./main`
+> > `./main path/to/filename`
 
-> As of now, the emulator is hard-coded to run whichever file is pointed to by the string in 
-
-> > chip8.c => loadProgram()
+> where the specified file is a valid chip8 program.
 
 Space Invaders
 ![ScreenShot](http://i.imgur.com/oAAj0cY.png)

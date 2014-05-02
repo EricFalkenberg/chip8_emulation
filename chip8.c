@@ -37,11 +37,11 @@ void init_chip() {
     }
 }
 
-void loadProgram() {
+void loadProgram(char* fname) {
     //
     // Load program from file
     //
-    FILE* file = fopen("sier.ch8","r");
+    FILE* file = fopen(fname,"r");
     unsigned short* read = malloc(sizeof(char));
     int count = 512;
     while (fread(read, sizeof(char), 1, file)) {
@@ -447,16 +447,21 @@ void drawScreen(void) {
 }
 
 int main(int argc, char **argv) {
-    init_chip();
-    loadProgram();
-    drawFlag = FALSE;
-    glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_RGB);
-    glutInitWindowSize(640,320);
-    glutCreateWindow("Emulator");
-    glutDisplayFunc(drawScreen);
-    glutIdleFunc(drawScreen);
-    glutMainLoop();
+    if (argc == 2) {
+        init_chip();
+        loadProgram(argv[1]);
+        drawFlag = FALSE;
+        glutInit(&argc, argv);
+        glutInitDisplayMode(GLUT_RGB);
+        glutInitWindowSize(640,320);
+        glutCreateWindow("Emulator");
+        glutDisplayFunc(drawScreen);
+        glutIdleFunc(drawScreen);
+        glutMainLoop();
+    }
+    else {
+        printf("usage: main <filename>\n");
+    }
     return EXIT_SUCCESS;
 }
 
