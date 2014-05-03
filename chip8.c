@@ -334,7 +334,9 @@ void executeCycle() {
                 //  A key press is awaited, and then stored in VX
                 //  TODO
                 //
-                    printf("Fuugggg\n");
+                    for (int i = 0; i < 16; i++) {
+                        
+                    }
                     break;
                 case 0x0015:
                 //
@@ -453,28 +455,50 @@ void drawScreen(void) {
 }
 
 void handleInput(unsigned char keyPressed, int x, int y) {
-    if (keyPressed == 'q') {
-        key[0x4] = 1;
-    }
-    else if (keyPressed == 'w') {
-        key[0x5] = 1;
-    }
-    else if (keyPressed == 'e') { 
-        key[0x6] = 1;
-    }
+    if (keyPressed == '1') {key[0x1] = 1;}
+    else if (keyPressed == '2') {key[0x2] = 1;}
+    else if (keyPressed == '3') {key[0x3] = 1;}
+    else if (keyPressed == '4') {key[0xC] = 1;}
+
+    else if (keyPressed == 'q') {key[0x4] = 1;}
+    else if (keyPressed == 'w') {key[0x5] = 1;}
+    else if (keyPressed == 'e') {key[0x6] = 1;}
+    else if (keyPressed == 'r') {key[0xD] = 1;}
+
+    else if (keyPressed == 'a') {key[0x7] = 1;}
+    else if (keyPressed == 's') {key[0x8] = 1;}
+    else if (keyPressed == 'd') {key[0x9] = 1;}
+    else if (keyPressed == 'f') {key[0xE] = 1;}
+    
+    else if (keyPressed == 'z') {key[0xA] = 1;}
+    else if (keyPressed == 'x') {key[0x0] = 1;}
+    else if (keyPressed == 'c') {key[0xB] = 1;}
+    else if (keyPressed == 'v') {key[0xF] = 1;}
+    
     glutPostRedisplay();
 }
 
 void handleInputRel(unsigned char keyPressed, int x, int y) {
-    if (keyPressed == 'q') {
-        key[0x4] = 0;
-    }
-    else if (keyPressed == 'w') {
-        key[0x5] = 0;
-    }
-    else if (keyPressed == 'e') { 
-        key[0x6] = 0;
-    }
+    if (keyPressed == '1') {key[0x1] = 0;}
+    else if (keyPressed == '2') {key[0x2] = 0;}
+    else if (keyPressed == '3') {key[0x3] = 0;}
+    else if (keyPressed == '4') {key[0xC] = 0;}
+
+    else if (keyPressed == 'q') {key[0x4] = 0;}
+    else if (keyPressed == 'w') {key[0x5] = 0;}
+    else if (keyPressed == 'e') {key[0x6] = 0;}
+    else if (keyPressed == 'r') {key[0xD] = 0;}
+
+    else if (keyPressed == 'a') {key[0x7] = 0;}
+    else if (keyPressed == 's') {key[0x8] = 0;}
+    else if (keyPressed == 'd') {key[0x9] = 0;}
+    else if (keyPressed == 'f') {key[0xE] = 0;}
+    
+    else if (keyPressed == 'z') {key[0xA] = 0;}
+    else if (keyPressed == 'x') {key[0x0] = 0;}
+    else if (keyPressed == 'c') {key[0xB] = 0;}
+    else if (keyPressed == 'v') {key[0xF] = 0;}
+    
     glutPostRedisplay();
 }
 
