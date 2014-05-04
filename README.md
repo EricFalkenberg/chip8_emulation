@@ -1,4 +1,4 @@
-Chip8-emu
+CHIP8-Emulator
 ========
 > A Chip8 Emulator written in the C programming language
 
