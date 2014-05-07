@@ -2,8 +2,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#ifdef __APPLE__
 #include <GLUT/glut.h>
-
+#else
+#include <GL/glut.h>
+#endif
 #define TRUE 1
 #define FALSE 0
 
