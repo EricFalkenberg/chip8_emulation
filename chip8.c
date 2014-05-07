@@ -335,7 +335,10 @@ void executeCycle() {
                 //  TODO
                 //
                     for (int i = 0; i < 16; i++) {
-                        
+                        if (key[i] == 1) {
+                            pc += 2;
+                            break;
+                        }
                     }
                     break;
                 case 0x0015:
