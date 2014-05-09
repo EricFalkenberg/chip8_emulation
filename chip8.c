@@ -335,10 +335,10 @@ void executeCycle() {
                 case 0x000A:
                 //
                 //  A key press is awaited, and then stored in VX
-                //  TODO
                 //
                     for (int i = 0; i < 16; i++) {
                         if (key[i] == 1) {
+                            v[(opcode & 0x0F00) >> 8] = i;
                             pc += 2;
                             break;
                         }
