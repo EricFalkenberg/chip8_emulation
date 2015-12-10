@@ -17,10 +17,13 @@ CHIP8-Emulator
 > where the specified file is a valid chip8 program.
 
 Space Invaders Demo
+
 ![ScreenShot](http://i.imgur.com/oAAj0cY.png)
 
 Sierpinski's Triangle Demo
+
 ![ScreenShot](http://i.imgur.com/DkG4eYn.png?1)
 
 Breakout Demo
+
 ![ScreenShot](http://i.imgur.com/DBEXNbx.png)
